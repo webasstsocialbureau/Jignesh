@@ -9,6 +9,7 @@ import Expertise from "./components/Expertise";
 import Awards from "./components/Awards";
 import ValuesEducation from "./components/ValuesEducation";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   useEffect(() => {
@@ -23,7 +24,9 @@ function App() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#080808] selection:bg-brand-pink selection:text-white scroll-smooth">
+    <main className="min-h-screen bg-[#050505] selection:bg-gold/30 selection:text-gold-light scroll-smooth overflow-x-hidden">
+      <div className="grain-overlay"></div>
+      <CustomCursor />
       <Hero />
       <About />
       <Expertise />

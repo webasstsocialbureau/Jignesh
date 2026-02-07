@@ -7,6 +7,7 @@ import {
   Facebook,
   Linkedin,
   ArrowUp,
+  ArrowUpRight,
 } from "lucide-react";
 
 const Footer = () => {
@@ -15,38 +16,18 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    {
-      icon: Instagram,
-      label: "Instagram",
-      url: "#",
-    },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      url: "#",
-    },
-    {
-      icon: Youtube,
-      label: "YouTube",
-      url: "#",
-    },
-    {
-      icon: Facebook,
-      label: "Facebook",
-      url: "#",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      url: "#",
-    },
+    { icon: Instagram, label: "Instagram", url: "#" },
+    { icon: Twitter, label: "Twitter", url: "#" },
+    { icon: Youtube, label: "YouTube", url: "#" },
+    { icon: Facebook, label: "Facebook", url: "#" },
+    { icon: Linkedin, label: "LinkedIn", url: "#" },
   ];
 
   const navigationLinks = [
-    { name: "Work", href: "#work" },
-    { name: "Journal", href: "#values" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#footer" },
+    { name: "The Vision", href: "#about" },
+    { name: "Expertise", href: "#expertise" },
+    { name: "Journey", href: "#work" },
+    { name: "Recognition", href: "#awards" },
   ];
 
   const scrollToSection = (e, href) => {
@@ -58,126 +39,133 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#050505] pt-12 lg:pt-24 pb-12 px-6 lg:px-16 border-t border-white/5 relative">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-12 gap-10 lg:gap-24 mb-12 lg:mb-20">
-          <div className="col-span-12 lg:col-span-5 flex flex-col items-start text-left">
-            <div className="flex items-center gap-2 mb-4 lg:mb-8">
-              <span className="font-black tracking-tighter text-lg lg:text-2xl uppercase text-left">
-                JIGNESH RANA
+    <footer className="bg-[#050505] pt-20 pb-12 px-6 lg:px-12 border-t border-white/5 relative overflow-hidden">
+      {/* Background architectural glow */}
+      <div className="absolute bottom-[-10%] right-[-5%] w-[40vw] h-[40vw] bg-gold/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+      {/* Footer Watermark */}
+      <div className="absolute top-1/2 left-[-10%] -translate-y-1/2 text-[25vw] font-serif italic font-black text-white/1 select-none pointer-events-none uppercase">
+        Visionary
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-12 gap-16 lg:gap-24 mb-24">
+          <div className="col-span-12 lg:col-span-6">
+            <div
+              className="flex items-center gap-6 mb-12 group cursor-pointer"
+              onClick={scrollToTop}
+            >
+              <div className="w-12 h-px bg-gold group-hover:w-20 transition-all duration-700"></div>
+              <span className="font-sans font-black tracking-tighter text-3xl lg:text-5xl text-white uppercase leading-none">
+                JIGNESH <br className="sm:hidden" />
+                <span className="font-serif italic font-light text-gold lowercase lg:ml-4 brightness-125">
+                  Rana.
+                </span>
               </span>
             </div>
-            <p className="text-white/40 text-[10px] sm:text-sm leading-relaxed font-light tracking-wide max-w-sm mb-8 lg:mb-12 text-left">
-              Launch specialist and media architect. Reshaping media landscapes across India through strategic innovation, architectural excellence, and visionary leadership.
+
+            <p className="text-white/40 text-sm lg:text-lg leading-relaxed font-light tracking-wide max-w-md mb-12 font-sans">
+              Launch specialist and media architect. Engineering momentum across
+              the Indian media landscape through strategic innovation and
+              visionary leadership.
             </p>
-            <div className="flex gap-2 sm:gap-6 justify-start">
+
+            <div className="flex gap-4">
               {socialLinks.map((social, i) => (
                 <a
                   key={i}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  title={social.label}
-                  className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-brand-pink hover:border-brand-pink transition-all hover:scale-110 duration-300"
+                  className="w-12 h-12 rounded-xl border border-white/5 bg-white/2 flex items-center justify-center text-white/30 hover:text-gold hover:border-gold/30 hover:scale-110 transition-all duration-500"
                 >
-                  <social.icon size={14} strokeWidth={1.5} />
+                  <social.icon size={18} strokeWidth={1} />
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-7">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 text-left">
+          <div className="col-span-12 lg:col-span-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 lg:gap-16">
               <div className="col-span-1">
-                <div className="mb-10 lg:mb-16">
-                  <h4 className="text-white font-bold text-[10px] tracking-[0.4em] uppercase mb-4 lg:mb-2">
-                    Navigation
-                  </h4>
-                  <ul className="space-y-3 lg:space-y-4">
-                    {navigationLinks.map((link) => (
-                      <li key={link.name}>
-                        <a
-                          href={link.href}
-                          onClick={(e) => scrollToSection(e, link.href)}
-                          className="text-white/40 text-[9px] lg:text-xs hover:text-brand-pink transition-colors tracking-widest uppercase cursor-pointer"
-                        >
-                          {link.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* <div className="mb-10 lg:mb-0">
-                  <h4 className="text-white font-bold text-[10px] tracking-[0.4em] uppercase mb-4 lg:mb-8">
-                    Contact
-                  </h4>
-                  <ul className="space-y-3 lg:space-y-4 text-white/40 text-[9px] lg:text-xs tracking-widest uppercase">
-                    <li>Mumbai, Maharashtra, IN</li>
-                    <li className="break-all">
+                <h4 className="text-gold text-[10px] tracking-[0.5em] font-black uppercase mb-8">
+                  Navigation
+                </h4>
+                <ul className="space-y-4">
+                  {navigationLinks.map((link) => (
+                    <li key={link.name}>
                       <a
-                        href="mailto:hello@jigneshrana.com"
-                        className="hover:text-brand-pink transition-colors"
+                        href={link.href}
+                        onClick={(e) => scrollToSection(e, link.href)}
+                        className="text-white/30 text-xs hover:text-gold transition-colors tracking-widest uppercase font-black italic block"
                       >
-                        hello@jigneshrana.com
+                        {link.name}
                       </a>
                     </li>
-                    <li className="break-all">
-                      <a
-                        href="mailto:media@times7.in"
-                        className="hover:text-brand-pink transition-colors"
-                      >
-                        media@times7.in
-                      </a>
-                    </li>
-                  </ul>
-                </div> */}
+                  ))}
+                </ul>
               </div>
 
-              <div className="col-span-1">
-                <h4 className="text-white font-bold text-[10px] tracking-[0.4em] uppercase mb-4 lg:mb-8 text-left">
-                  Current Role
+              <div className="col-span-1 sm:col-span-2">
+                <h4 className="text-gold text-[10px] tracking-[0.5em] font-black uppercase mb-8">
+                  Current Roles
                 </h4>
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-brand-pink font-bold text-[9px] lg:text-xs tracking-widest mb-1 lg:mb-2 uppercase text-left">
+                <div className="space-y-8">
+                  <div className="group/role">
+                    <p className="text-white font-sans font-black text-xs tracking-widest mb-2 uppercase opacity-40 group-hover/role:opacity-100 transition-opacity">
                       CO-FOUNDER & DIRECTOR
                     </p>
                     <a
                       href="https://bigtvlive.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-start gap-2 text-white/40 hover:text-brand-pink transition-colors text-[9px] lg:text-xs tracking-widest uppercase group/footer-link"
+                      className="flex items-center gap-3 text-gold/60 hover:text-gold transition-colors text-lg lg:text-xl font-serif italic"
                     >
-                      <span>Big</span>
-                      <span className="bg-brand-pink text-black px-1 font-black text-[7px] lg:text-[9px] group-hover/footer-link:bg-white transition-colors">
-                        TV
-                      </span>
-                      <span>Malayalam</span>
-                      <span className="opacity-0 group-hover/footer-link:opacity-100 transition-opacity ml-1">↗</span>
+                      Big TV Malayalam News
+                      <ArrowUpRight
+                        size={16}
+                        className="opacity-0 group-hover/role:opacity-100 transition-all group-hover/role:translate-x-1 group-hover/role:-translate-y-1"
+                      />
                     </a>
                   </div>
-                  <div>
-                    <p className="text-brand-pink font-bold text-[9px] lg:text-xs tracking-widest mb-1 lg:mb-2 uppercase text-left">
+                  <div className="group/role">
+                    <p className="text-white font-sans font-black text-xs tracking-widest mb-2 uppercase opacity-40 group-hover/role:opacity-100 transition-opacity">
                       GROUP CEO
                     </p>
                     <a
                       href="https://time7.in/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-start gap-2 text-white/40 hover:text-brand-pink transition-colors text-[9px] lg:text-xs tracking-widest uppercase group/footer-link"
+                      className="flex items-center gap-3 text-gold/60 hover:text-gold transition-colors text-lg lg:text-xl font-serif italic"
                     >
-                      <span>Times</span>
-                      <span className="bg-brand-pink text-black px-1 font-black text-[7px] lg:text-[9px] group-hover/footer-link:bg-white transition-colors">
-                        7
-                      </span>
-                      <span className="opacity-0 group-hover/footer-link:opacity-100 transition-opacity ml-1">↗</span>
+                      Times 7
+                      <ArrowUpRight
+                        size={16}
+                        className="opacity-0 group-hover/role:opacity-100 transition-all group-hover/role:translate-x-1 group-hover/role:-translate-y-1"
+                      />
                     </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-[10px] tracking-[0.4em] font-black text-white/20 uppercase">
+            © 2026 Jignesh Rana. All Rights Reserved.
+          </p>
+
+          <motion.button
+            whileHover={{ y: -5 }}
+            onClick={scrollToTop}
+            className="flex items-center gap-4 text-gold text-[10px] tracking-[0.5em] font-black uppercase group"
+          >
+            <span>Back to Top</span>
+            <div className="w-10 h-10 rounded-full border border-gold/20 flex items-center justify-center group-hover:bg-gold/10 transition-colors">
+              <ArrowUp size={16} />
+            </div>
+          </motion.button>
         </div>
       </div>
     </footer>

@@ -59,77 +59,99 @@ const Timeline = () => {
   return (
     <section
       id="work"
-      className="bg-[#080808] py-24 px-8 lg:px-16 overflow-hidden"
+      className="bg-[#050505] py-20 lg:py-32 px-6 lg:px-12 overflow-hidden relative"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="mb-20"
+          className="mb-32"
         >
-          <h2 className="text-brand-pink text-[10px] tracking-[0.5em] font-black uppercase mb-4 flex items-center gap-4">
-            <span className="w-12 h-[1px] bg-brand-pink"></span>
-            Career Timeline
+          <h2 className="text-gold text-[10px] tracking-[0.6em] font-black uppercase mb-6 flex items-center gap-6">
+            <span className="w-12 h-px bg-gold/40"></span>
+            Professional Narrative
           </h2>
-          <h3 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] lg:leading-none">
-            THE <span className="text-brand-pink">JOURNEY</span>
+          <h3 className="text-4xl sm:text-5xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] font-sans">
+            THE ARCHITECTURAL <br />
+            <span className="font-serif italic font-light text-gold lowercase">
+              Journey.
+            </span>
           </h3>
         </motion.div>
 
         <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-[8px] md:left-1/2 top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2"></div>
+          {/* Vertical Architectural Line */}
+          <div className="absolute left-[8px] md:left-1/2 top-0 bottom-0 w-px bg-white/5 -translate-x-1/2">
+            <div className="absolute inset-0 bg-linear-to-b from-gold/30 via-gold/10 to-transparent"></div>
+          </div>
 
-          <div className="space-y-8 lg:space-y-24">
+          <div className="space-y-12 lg:space-y-32">
             {timelineData.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className={`flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 1.2,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: index * 0.1,
+                }}
+                className={`flex flex-col md:flex-row items-start md:items-center gap-8 lg:gap-16 ${index % 2 === 0 ? "md:flex-row-reverse text-left md:text-right" : "text-left"}`}
               >
-                {/* Content Card */}
-                <div className="w-full md:w-1/2 group ml-4 md:ml-0">
-                  <div className="p-6 lg:p-12 border border-white/5 rounded-xl lg:rounded-2xl bg-white/[0.02] hover:bg-brand-pink/[0.02] hover:border-brand-pink/20 transition-all duration-500 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-brand-pink/5 blur-[40px] -translate-y-1/2 translate-x-1/2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-
-                    <span className="text-brand-pink font-bold text-[8px] lg:text-[10px] tracking-[0.3em] uppercase block mb-1 lg:mb-2">
+                {/* Year Badge */}
+                <div
+                  className={`w-full md:w-1/2 flex ${index % 2 === 0 ? "justify-start md:justify-end" : "justify-start"} pl-10 md:pl-0`}
+                >
+                  <div className="flex flex-col">
+                    <span className="text-gold font-serif italic text-xl lg:text-4xl mb-2">
                       {item.year}
                     </span>
-                    <h4 className="text-lg lg:text-3xl font-black uppercase tracking-tighter mb-1">
+                    <div
+                      className={`w-12 h-px bg-gold/30 ${index % 2 === 0 ? "md:ml-auto" : ""}`}
+                    ></div>
+                  </div>
+                </div>
+
+                {/* Dot */}
+                <div className="absolute md:relative left-[8px] md:left-0 z-10 shrink-0 -translate-x-1/2 md:translate-x-0 mt-2 md:mt-0">
+                  <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-charcoal border border-gold/50 shadow-[0_0_15px_rgba(197,160,89,0.3)] ring-4 ring-white/5"></div>
+                </div>
+
+                {/* Content Card */}
+                <div className="w-full md:w-1/2 group pl-10 md:pl-0">
+                  <div className="p-6 lg:p-14 rounded-2xl bg-white/2 border border-white/5 hover:border-gold/20 hover:bg-gold/[0.02] transition-all duration-700 relative overflow-hidden group">
+                    <h4 className="text-xl lg:text-4xl font-black uppercase tracking-tighter mb-4 font-sans text-white group-hover:text-gold transition-colors duration-700">
                       {item.role}
                     </h4>
-                    <p className="text-white/40 text-[10px] lg:text-xs font-bold tracking-widest uppercase mb-4 lg:mb-6">
+                    <p className="text-white/40 text-[9px] lg:text-xs font-black tracking-[0.3em] uppercase mb-6 font-sans">
                       {item.link ? (
                         <a
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="hover:text-brand-pink transition-colors inline-flex items-center gap-1 group/link"
+                          className="hover:text-gold transition-colors inline-flex items-center gap-2"
                         >
-                          {item.org}
-                          <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">↗</span>
+                          <span className="border-b border-gold/20 pb-1">
+                            {item.org}
+                          </span>
+                          <span className="text-gold opacity-0 group-hover:opacity-100 transition-opacity">
+                            ↗
+                          </span>
                         </a>
                       ) : (
                         item.org
                       )}
                     </p>
-                    <p className="text-white/60 text-xs lg:text-sm font-light leading-relaxed max-w-sm">
+                    <p className="text-white/50 text-sm lg:text-base font-light leading-relaxed font-sans max-w-sm group-hover:text-white/70 transition-colors duration-700">
                       {item.desc}
                     </p>
+
+                    {/* Shadow Accent */}
+                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-gold/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
                   </div>
                 </div>
-
-                {/* Dot */}
-                <div className="relative z-10 ml-[8px] md:ml-0 -translate-x-1/2">
-                  <div className="w-3 h-3 lg:w-4 lg:h-4 rounded-full bg-[#080808] border-2 border-brand-pink ring-4 ring-brand-pink/10"></div>
-                </div>
-
-                {/* Empty Spacer */}
-                <div className="hidden md:block md:w-1/2"></div>
               </motion.div>
             ))}
           </div>
